@@ -5,9 +5,12 @@ import RecipeContainer from "./RecipeContainer";
 import RecipeForm from "./RecipeForm";
 
 function App() {
+const [recipes, setRecipes] = useState([])
+  const[ toggle, setToggle] = useState(false)
 
-  const [recipes, setRecipes] = useState([])
-
+  function handleClick() {
+        setToggle(!toggle)
+     }
 
   useEffect(() => {
     fetch(`http://127.0.0.1:9292/recipes`)
@@ -22,8 +25,10 @@ function App() {
 
   return (
     <div className="App">
+
       <Nav></Nav>
-     <RecipeForm setRecipes={setRecipes} recipes={recipes}></RecipeForm>
+     {toggle && <RecipeForm setRecipes={setRecipes} recipes={recipes}></RecipeForm>}
+     <button onClick={handleClick}>Add A New Recipe</button>
      <RecipeContainer recipes={recipes} setRecipes={setRecipes}></RecipeContainer>
     </div>
     
