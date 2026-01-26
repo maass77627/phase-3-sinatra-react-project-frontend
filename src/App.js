@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Nav from "./Nav";
+import "./App.css";
+import RecipeContainer from "./RecipeContainer";
+import RecipeForm from "./RecipeForm";
 
 function App() {
+
+  const [recipes, setRecipes] = useState([])
+
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:9292/recipes`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+      setRecipes(json)
+    })
+
+  }, [])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav></Nav>
+     <RecipeForm setRecipes={setRecipes} recipes={recipes}></RecipeForm>
+     <RecipeContainer recipes={recipes} setRecipes={setRecipes}></RecipeContainer>
     </div>
+    
   );
 }
 
