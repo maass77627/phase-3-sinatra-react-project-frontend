@@ -26,7 +26,18 @@
 
 .recipe {
   background-color: antiquewhite;
-  padding-top: 100px;
+  margin-top: 100px;
+  /* padding-top: 100px; */
+  margin-right: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  box-shadow: 2px 6px 8px rgb(71, 249, 48);
+
+}
+.recipe:hover {
+  transform: translateY(-20px);
 }
 
 .recipeimage {
