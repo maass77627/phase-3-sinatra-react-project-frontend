@@ -9,6 +9,7 @@ import Footer from "./Footer";
 
 function App() {
 const [recipes, setRecipes] = useState([])
+const [categories, setCategories] = useState([])
   const[ toggle, setToggle] = useState(false)
 
   function handleClick() {
@@ -24,6 +25,16 @@ const [recipes, setRecipes] = useState([])
     })
 
   }, [])
+
+   useEffect(() => {
+    fetch(`http://127.0.0.1:9292/categories`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+      setCategories(json)
+    })
+
+  }, [])
   
 
   return (
@@ -33,7 +44,7 @@ const [recipes, setRecipes] = useState([])
       <FilterForm recipes={recipes} setRecipes={setRecipes}></FilterForm>
      {toggle && <RecipeForm setRecipes={setRecipes} recipes={recipes}></RecipeForm>}
      <button onClick={handleClick}>Add A New Recipe</button>
-     <RecipeContainer recipes={recipes} setRecipes={setRecipes}></RecipeContainer>
+     <RecipeContainer categories={categories} recipes={recipes} setRecipes={setRecipes}></RecipeContainer>
      
     <Footer></Footer>
     </div>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import EditForm from "./EditForm"
 
 
-function Recipe({recipe, setRecipes}) {
+function Recipe({recipe, setRecipes, categories}) {
 
     const [toggle, setToggle] = useState(false)
 
@@ -49,7 +49,7 @@ function Recipe({recipe, setRecipes}) {
         <div className="recipe">
             <button className="edit-button" onClick={handleEditClick}>Edit</button>
             <button className="delete-button" onClick={() => handleDelete(recipe.id)}>x</button>
-             {toggle && <EditForm recipe={recipe}></EditForm>}
+             {toggle && <EditForm categories={categories} recipe={recipe}></EditForm>}
             <strong><p>{recipe.name}</p></strong>
             <img className="recipeimage" src={recipe.image} alt="rec"></img><br></br>
             <label>Last Cooked On</label>
