@@ -10,7 +10,7 @@ function RecipeContainer({recipes, setRecipes}) {
         <div className="RecipeContainer">
           <h1 className="recipecontainer-title">Recipes</h1>
            
-          {recipes.map((rec) => <Recipe setRecipes={setRecipes} key={rec.id} rec={rec}></Recipe>)}
+          {recipes.map((recipe) => <Recipe setRecipes={setRecipes} key={recipe.id} recipe={recipe}></Recipe>)}
         </div>
     )
 }

@@ -1,7 +1,18 @@
 import React from "react";
 import RecipeRotator from "./RecipeRotator";
+import { useState } from "react";
+import EditForm from "./EditForm"
 
-function Recipe({rec, setRecipes}) {
+
+function Recipe({recipe, setRecipes}) {
+
+    const [toggle, setToggle] = useState(false)
+
+    function handleEditClick() {
+        setToggle(!toggle)
+
+
+    }
 
     function handleDelete(id) {
         console.log("clicked")
@@ -15,8 +26,10 @@ function Recipe({rec, setRecipes}) {
         setRecipes((prevrecipies) => prevrecipies.filter((recipe) => recipe.id !== id))
     }
 
-    function handleClick(rec) {
-        let id = rec.id
+
+
+    function handleClick(recipe) {
+        let id = recipe.id
         let today = new Date().toISOString().split("T")[0]
         fetch(`http://127.0.0.1:9292/recipes/${id}`, {
             method: "PATCH",
@@ -34,14 +47,15 @@ function Recipe({rec, setRecipes}) {
 
     return (
         <div className="recipe">
-         <button className="delete-button" onClick={() => handleDelete(rec.id)}>x</button>
-        
-         <strong><p>{rec.name}</p></strong>
-         <img className="recipeimage" src={rec.image} alt="rec"></img><br></br>
-         <label>Last Cooked On</label>
-         <p>{rec.last_cooked_on}</p>
-           <RecipeRotator rec={rec}></RecipeRotator>
-         <button onClick={() => handleClick(rec)} className="made-button">Made Today</button>
+            <button className="edit-button" onClick={handleEditClick}>Edit</button>
+            <button className="delete-button" onClick={() => handleDelete(recipe.id)}>x</button>
+             {toggle && <EditForm recipe={recipe}></EditForm>}
+            <strong><p>{recipe.name}</p></strong>
+            <img className="recipeimage" src={recipe.image} alt="rec"></img><br></br>
+            <label>Last Cooked On</label>
+            <p>{recipe.last_cooked_on}</p>
+           <RecipeRotator recipe={recipe}></RecipeRotator>
+         <button onClick={() => handleClick(recipe)} className="made-button">Made Today</button>
         
         </div>
     )

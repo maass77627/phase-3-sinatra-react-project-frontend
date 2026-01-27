@@ -70,5 +70,25 @@
 
 .delete-button {
   position: absolute;
-  left: 230px;
+  left: 250px;
+}
+
+.filterform{
+  position: absolute;
+  top: 170px;
+  margin-left: 600px;
+}
+
+.footer {
+  height: 100px;
+  background-color: rgb(16, 248, 16);
+}
+
+
+.edit-button {
+  position: absolute;
+  left: 10px
+  
+  
+
 }

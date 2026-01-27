@@ -3,6 +3,9 @@ import Nav from "./Nav";
 import "./App.css";
 import RecipeContainer from "./RecipeContainer";
 import RecipeForm from "./RecipeForm";
+import FilterForm from "./FilterForm";
+import Footer from "./Footer";
+// import EditForm from "./EditForm";
 
 function App() {
 const [recipes, setRecipes] = useState([])
@@ -27,9 +30,12 @@ const [recipes, setRecipes] = useState([])
     <div className="App">
 
       <Nav></Nav>
+      <FilterForm recipes={recipes} setRecipes={setRecipes}></FilterForm>
      {toggle && <RecipeForm setRecipes={setRecipes} recipes={recipes}></RecipeForm>}
      <button onClick={handleClick}>Add A New Recipe</button>
      <RecipeContainer recipes={recipes} setRecipes={setRecipes}></RecipeContainer>
+     
+    <Footer></Footer>
     </div>
     
   );
