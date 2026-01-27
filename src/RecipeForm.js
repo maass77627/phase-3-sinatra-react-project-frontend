@@ -29,7 +29,7 @@ function handleChange(e) {
         })
         .then((response) => response.json())
         .then((json) => {
-            setRecipes({...recipes, json})
+            setRecipes((prevRecipes) => [...prevRecipes, json])
             console.log(json)
         })
 
