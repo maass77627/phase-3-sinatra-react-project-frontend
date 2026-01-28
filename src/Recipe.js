@@ -1,18 +1,18 @@
 import React from "react";
 import RecipeRotator from "./RecipeRotator";
-import { useState } from "react";
-import EditForm from "./EditForm"
+// import { useState } from "react";
+// import EditForm from "./EditForm"
 
 
-function Recipe({recipe, setRecipes, categories}) {
+function Recipe({recipe, setRecipes, categories, handleEditClick}) {
 
-    const [toggle, setToggle] = useState(false)
+    // const [toggle, setToggle] = useState(false)
 
-    function handleEditClick() {
-        setToggle(!toggle)
+    // function handleEditClick() {
+    //     setToggle(!toggle)
 
 
-    }
+    // }
 
     function handleDelete(id) {
         console.log("clicked")
@@ -47,15 +47,17 @@ function Recipe({recipe, setRecipes, categories}) {
 
     return (
         <div className="recipe">
-            <button className="edit-button" onClick={handleEditClick}>Edit</button>
+            <button className="edit-button" onClick={() => handleEditClick(recipe)}>Edit</button>
             <button className="delete-button" onClick={() => handleDelete(recipe.id)}>x</button>
-             {toggle && <EditForm categories={categories} recipe={recipe}></EditForm>}
             <strong><p>{recipe.name}</p></strong>
+             
+            
             <img className="recipeimage" src={recipe.image} alt="rec"></img><br></br>
             <label>Last Cooked On</label>
             <p>{recipe.last_cooked_on}</p>
            <RecipeRotator recipe={recipe}></RecipeRotator>
          <button onClick={() => handleClick(recipe)} className="made-button">Made Today</button>
+         {/* {toggle && <EditForm categories={categories} recipe={recipe}></EditForm>} */}
         
         </div>
     )

@@ -25,7 +25,27 @@ function EditForm({recipe, categories}) {
 
         function handleSubmit(e) {
             e.preventDefault()
-            fetch()
+            fetch(`http://localhost:9292/recipes/#id`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw new Error("Could not complete the request")
+            })
+            .then((json) => {
+                console.log(json)
+            })
+            .catch((error) =>{
+                console.error(error)
+                alert("Request failed, try again")
+            })
+            
         }
 
 
@@ -33,17 +53,23 @@ function EditForm({recipe, categories}) {
     return (
 
         <div className="edit-form">
-            <form>
-                <input onChange={(e) => handleChange(e)} type="text" name="name" value={formData.name}></input>
-                <input onChange={(e) => handleChange(e)} type="text" name="ingredients" value={formData.ingredients}></input>
-                <input onChange={(e) => handleChange(e)} type="text" name="directions" value={formData.directions}></input>
-                <input onChange={(e) => handleChange(e)} type="text" name="cook_time" value={formData.cook_time}></input>
-                <input onChange={(e) => handleChange(e)} type="text" name="image" value={formData.image}></input>
+            <form onSubmit={handleSubmit}>
+                <label>Name:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="name" value={formData.name}></input><br></br>
+                <label>Ingredients:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="ingredients" value={formData.ingredients}></input><br></br>
+                <label>Directions:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="directions" value={formData.directions}></input><br></br>
+                <label>Cook Time:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="cook_time" value={formData.cook_time}></input><br></br>
+                <label>Image:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="image" value={formData.image}></input><br></br>
+                <label>Category</label><br></br>
                 <select onChange={(e) => handleChange(e)} type="select" name="category_id" value={formData.category_id}>
                     <option>Select Category</option>  
-                {categories.map((category) => {
+                {categories.map((category) => (
                     <option  key={category.id} value={category.id}>{category.name}</option>
-                })}
+                ))}
                 </select>
                 <input type="submit" value="submit" ></input>
 
