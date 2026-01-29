@@ -127,3 +127,8 @@
   .hidden {
     visibility: hidden;
   }
+
+  .recipe-rotator {
+    height: 100px;
+    background-color: blue;
+  }
