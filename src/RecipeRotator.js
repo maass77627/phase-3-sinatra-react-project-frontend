@@ -6,6 +6,9 @@ function RecipeRotator({rec}) {
    console.log(Date.now())
    console.log(new Date().toLocaleDateString("en-US"))
 
+  let date = new Date().toLocaleDateString("en-US")
+  console.log(date)
+
     return (
 
         <div className="recipe-rotator">
