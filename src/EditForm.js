@@ -16,6 +16,11 @@ function EditForm({recipe, categories}) {
         })
 
 
+        function handleEditClose(e) {
+            e.target.parentNode.classList.add("hidden")
+
+        }
+
 
         function handleChange(e) {
             let name = e.target.name
@@ -55,6 +60,7 @@ function EditForm({recipe, categories}) {
     return (
 
         <div className="edit-form">
+            <button onClick={(e) => handleEditClose(e)} className="edit-form-close">x</button>
             <form onSubmit={handleSubmit}>
                 <label>Name:</label><br></br>
                 <input onChange={(e) => handleChange(e)} type="text" name="name" value={formData.name}></input><br></br>

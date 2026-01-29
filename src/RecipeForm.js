@@ -21,6 +21,12 @@ function handleChange(e) {
 }
 
 
+function handleCloseForm(e) {
+    console.log(e.target.parentNode)
+     e.target.parentNode.classList.add("hidden")
+
+}
+
          function handleSubmit(e) {
             e.preventDefault() 
             console.log(formData)
@@ -42,16 +48,17 @@ function handleChange(e) {
 
     return (
         <div className="recipe-form">
+            <button className="recipe-form-close" onClick={(e) => handleCloseForm(e)}>x</button>
            <form onSubmit={(e) => handleSubmit(e)}>
-            <label>Name:</label>
+            <label>Name:</label><br></br>
             <input onChange={handleChange} type="text" name="name" value={formData.name} ></input><br></br>
-            <label>Image:</label>
+            <label>Image:</label><br></br>
             <input onChange={handleChange} type="text" name="image" value={formData.image}></input><br></br>
-            <label>Ingredients:</label>
+            <label>Ingredients:</label><br></br>
             <input onChange={handleChange} type="text" name="ingredients" value={formData.ingredients}></input><br></br>
-            <label>Directions:</label>
+            <label>Directions:</label><br></br>
             <input onChange={handleChange} type="text" name="directions" value={formData.directions}></input><br></br>
-            <label>Cook Time:</label>
+            <label>Cook Time:</label><br></br>
             <input onChange={handleChange} type="text" name="cook_time" value={formData.cook_time}></input><br></br>
             
 

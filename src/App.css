@@ -61,7 +61,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 5px 8px 12px black;
   z-index: 10;
+}
+
+.recipe-form-close {
+  position: absolute;
+  left:  250px;
+  top: 0px;
 }
 
 .made-button {
@@ -95,12 +102,28 @@
   .edit-form {
     position: absolute;
     top: 250px;
-    height: 300px;
-    width: 400px;
+    height: 350px;
+    width: 350px;
     z-index: 99;
     background-color: aquamarine;
+    border-radius: 20px;
+    box-shadow: 5px 8px 12px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-form-close {
+    position: absolute;
+    top: 0px;
+    left: 300px;
+
   }
 
   label {
     font-weight: bold;
+  }
+
+  .hidden {
+    visibility: hidden;
   }
