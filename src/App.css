@@ -28,6 +28,7 @@
 }
 
 .recipe {
+  position: relative;
   background-color: antiquewhite;
   margin-top: 100px;
  /* max-height: ; */
@@ -98,4 +99,8 @@
     width: 400px;
     z-index: 99;
     background-color: aquamarine;
+  }
+
+  label {
+    font-weight: bold;
   }

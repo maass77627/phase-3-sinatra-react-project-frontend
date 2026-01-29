@@ -40,7 +40,7 @@ function Recipe({recipe, setRecipes, categories, handleEditClick}) {
         })
         .then((response) => response.json())
         .then((json) => {
-            setRecipes((prevrecipies) => prevrecipies.map((rec) => rec.id === json.id ? json : rec ))
+            setRecipes((prevRecipies) => prevRecipies.map((rec) => rec.id === json.id ? json : rec ))
             console.log(json)
         })
     }
@@ -50,9 +50,17 @@ function Recipe({recipe, setRecipes, categories, handleEditClick}) {
             <button className="edit-button" onClick={() => handleEditClick(recipe)}>Edit</button>
             <button className="delete-button" onClick={() => handleDelete(recipe.id)}>x</button>
             <strong><p>{recipe.name}</p></strong>
+
              
             
             <img className="recipeimage" src={recipe.image} alt="rec"></img><br></br>
+            <label>Ingredients:</label>
+            <p>{recipe.ingredients}</p>
+            <label>Directions:</label>
+            <p>{recipe.directions}</p>
+            <label>Cook Time:</label>
+            <p>{recipe.cook_time}</p>
+            
             <label>Last Cooked On</label>
             <p>{recipe.last_cooked_on}</p>
            <RecipeRotator recipe={recipe}></RecipeRotator>

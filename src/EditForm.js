@@ -11,7 +11,8 @@ function EditForm({recipe, categories}) {
         directions: recipe.directions,
         cook_time: recipe.cook_time,
         image: recipe.image,
-        category_id: recipe.category_id
+        category_id: recipe.category_id,
+        last_cooked_on: recipe.last_cooked_on
         })
 
 
@@ -25,7 +26,8 @@ function EditForm({recipe, categories}) {
 
         function handleSubmit(e) {
             e.preventDefault()
-            fetch(`http://localhost:9292/recipes/#id`, {
+                  let id = recipe.id
+            fetch(`http://localhost:9292/recipes/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -64,6 +66,8 @@ function EditForm({recipe, categories}) {
                 <input onChange={(e) => handleChange(e)} type="text" name="cook_time" value={formData.cook_time}></input><br></br>
                 <label>Image:</label><br></br>
                 <input onChange={(e) => handleChange(e)} type="text" name="image" value={formData.image}></input><br></br>
+                <label>Last Cooked On:</label><br></br>
+                <input onChange={(e) => handleChange(e)} type="text" name="last_cooked_on" value={formData.last_cooked_on}></input><br></br>
                 <label>Category</label><br></br>
                 <select onChange={(e) => handleChange(e)} type="select" name="category_id" value={formData.category_id}>
                     <option>Select Category</option>  
