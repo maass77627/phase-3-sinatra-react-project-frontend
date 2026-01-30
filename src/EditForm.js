@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 
-function EditForm({recipe, categories}) {
+function EditForm({recipe, categories, recipes, setRecipes}) {
     console.log(recipe)
 
     const [formData, setFormData] = useState({
@@ -46,6 +46,10 @@ function EditForm({recipe, categories}) {
                 throw new Error("Could not complete the request")
             })
             .then((json) => {
+                
+                setRecipes((prevRecipies) => prevRecipies.map((recipe) =>
+                     recipe.id === json.id ? json : recipe
+            ))
                 console.log(json)
             })
             .catch((error) =>{

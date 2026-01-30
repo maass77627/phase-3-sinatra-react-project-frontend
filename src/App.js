@@ -38,9 +38,8 @@ function App() {
   }, [])
 
   console.log(recipes)
-  let filteredRecipes = selectedCategory ? recipes.filter((recipe) => recipe.category_id === Number(selectedCategory)) : recipes
+  let filteredRecipes = selectedCategory ? recipes.filter((recipe) => Number(recipe.category_id) === Number(selectedCategory)) : recipes
   
-console.log(filteredRecipes)
   return (
     <div className="App">
 

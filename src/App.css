@@ -28,9 +28,11 @@
 }
 
 .recipe {
+  
   position: relative;
+  margin-top: 120px;
   background-color: antiquewhite;
-  margin-top: 100px;
+  
  /* max-height: ; */
   margin-right: 5px;
   border-color: black;
@@ -79,12 +81,16 @@
 .delete-button {
   position: absolute;
   left: 250px;
+  border-radius: 10px;
+  background-color: rgb(225, 235, 193);
+
 }
 
 .filter-form{
+  
   position: absolute;
 
-  top: 150px;
+  top: 130px;
   margin-left: 100px;
 }
 
@@ -96,16 +102,18 @@
 
 .edit-button {
   position: absolute;
-  left: 10px
+  left: 10px;
+  background-color: rgb(225, 235, 193);
+border-radius: 10px;
   }
 
   .edit-form {
     position: absolute;
     top: 250px;
-    height: 350px;
+    height: 400px;
     width: 350px;
     z-index: 99;
-    background-color: aquamarine;
+    background-color: rgb(3, 151, 6);
     border-radius: 20px;
     box-shadow: 5px 8px 12px black;
     display: flex;
@@ -130,5 +138,5 @@
 
   .recipe-rotator {
     height: 100px;
-    background-color: blue;
+    background-color: rgb(169, 169, 194);
   }

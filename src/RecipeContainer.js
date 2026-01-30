@@ -21,7 +21,7 @@ function RecipeContainer({recipes, setRecipes, categories}) {
     return (
         <div className="RecipeContainer">
           <h1 className="recipecontainer-title">Recipes</h1>
-           {editToggle && <EditForm recipe={editRecipe} categories={categories} recipes={recipes}></EditForm>}
+           {editToggle && <EditForm setRecipes={setRecipes} recipe={editRecipe} categories={categories} recipes={recipes}></EditForm>}
           {recipes.map((recipe) => <Recipe  handleEditClick={handleEditClick} categories={categories} setRecipes={setRecipes} key={recipe.id} recipe={recipe}></Recipe>)}
         </div>
     )
